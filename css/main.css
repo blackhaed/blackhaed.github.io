@@ -1,0 +1,415 @@
+* {
+	--title-column-width: 45ch;
+	--column-gap: 4ch;
+	--text-wrap-width: 62ch;
+	--line-height: 1.2em;
+	--light:
+	rgb(0 0 0);
+	--font-size: 1em;
+	--single-bottom-line-padding:
+	calc(1 * var(--line-height)) 3ch calc(1 * var(--line-height)) 3ch;
+	--double-bottom-line-padding:
+	calc(1 * var(--line-height)) 3ch calc(2 * var(--line-height)) 3ch;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	background-color: white;
+	height: 100%;
+}
+body {
+	font-size: var(--font-size);
+	font-family: Simple Console;
+	font-weight: 400;
+	line-height: var(--line-height);
+	margin: 0;
+	color: var(--light);
+	min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 100%;
+	font-weight: 700;
+	min-height: var(--line-height);
+}
+h2 {
+	font-weight: inherit;
+}
+
+img{
+	width: 100%;
+	display: block;
+}
+pre {
+	font-family: inherit;
+	margin: 0;
+	padding: 0;
+/*	white-space: normal;*/
+/*	white-space: pre-line;*/
+	max-width: var(--text-wrap-width);
+}
+a {
+	display: block;
+	color: black;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+section,
+section.col_1 {
+	display: grid;
+	/* grid-template-columns: var(--title-column-width) max-content; */
+	grid-column-gap: var(--column-gap);
+	padding: var(--single-bottom-line-padding);
+	width: 100%;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+section.col_2 {
+	grid-template-columns: var(--title-column-width) max-content max-content;
+}
+
+section.double_padding {
+	padding: var(--double-bottom-line-padding);
+}
+
+ol {
+	margin: 0;
+	padding: 0;
+}
+
+ol li {
+	padding-top: 0.25em;
+	border-top: 1px solid var(--light);
+	margin-bottom: var(--line-height);
+}
+
+video {
+	width: 100%;
+	display: block;
+}
+.flap span{
+	display: block;
+	min-height: var(--line-height);
+}
+.light {
+	 color: black;
+	 background-color: var(--light);
+}
+.dark {
+	 color: var(--light);
+	 background-color: black;
+}
+.red {
+	 color: var(--light);
+	 background-color: black;
+}
+.diagram {
+	position: relative;
+}
+.diagram img{
+	position: absolute;
+}
+.diagram svg{
+	display: block;
+	position: relative;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+.diagram svg text {
+	text-anchor : middle;
+	font-size: 16px;
+}
+.diagram svg path {
+	fill : none;
+	stroke : black;
+	stroke-width : 1px;
+	/*vector-effect : non-scaling-stroke;*/
+}
+.diagram svg circle {
+	r : 2.5px;
+	fill : black;
+	stroke : none;
+}
+.flip {
+	background-color: var(--light);
+  	perspective: 200vw;
+  	position: relative;
+  	height: 100vw;
+  	overflow: hidden;
+}
+.flip_inner {
+	position: relative;
+	transition: transform  0.8s;
+	transform-style: preserve-3d;
+	display: flex;
+	justify-content: center;
+
+}
+.anim_back {
+	transform: rotateY(180deg);
+}
+.anim_front .bg, .anim_back .bg{
+	position: relative;
+	width: auto;
+	height: 100vw;
+}
+.anim_front .GIFoverlay{
+	position: absolute;
+	width: 73.5%;
+	left: 12.7%;
+	top: 19.0%;
+	opacity: 70%;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+	mix-blend-mode: multiply;
+}
+.anim_front, .anim_back {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.rotated {
+	transform: rotateY(180deg);
+}
+.rotated .anim_front {
+	/* veird FF fix */
+	opacity: 0.99;
+}
+#header {
+	position: absolute;
+}
+.hidden {
+	display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+.input-incomplete {
+	background: linear-gradient(-90deg, rgb(100, 100, 100) 0%, black 100%);
+/*	background-color: rgb(160, 30, 30) !important;*/
+}
+
+textarea,
+input[type=text] {
+	font-size: 1em;
+	font-family: inherit;
+	border: 1px solid rgb(120, 120, 120);
+	margin: 0 0 0.3em 0;
+	border-radius: 3px;
+	background-color: black;
+	color: white;
+	padding: 0.2em;
+}
+
+textarea {
+	resize: vertical;
+	min-height: calc( 4 * var(--line-height));
+}
+
+/* -------------------------------------------------------------------------- */
+
+.tokengrid {
+	display: grid;
+	grid-template-columns: min-content min-content minmax(42ch, min-content) min-content min-content;
+}
+.tokengrid div {
+	padding-right: 2ch;
+}
+.tokengrid .f {
+	border-top: solid 1px var(--light);
+}
+.tokengrid div:nth-child(5n-4) {
+	text-align: right;
+}
+.tokengrid div:nth-child(5n) {
+	padding-right: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+.submitgrid {
+	display: grid;
+	grid-column-gap: 4ch;
+	grid-template-columns: max-content auto;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.claimgrid {
+	display: grid;
+	grid-template-columns: max-content max-content max-content;
+}
+.claimgrid div {
+	padding-right: 2ch;
+}
+.claimgrid div:nth-child(3n){
+	padding-right: 0;
+}
+.claimgrid .f {
+	padding-top: 0.25em;
+	border-top: solid 1px var(--light);
+}
+/*.claimgrid div:nth-child(4n-3) {
+	text-align: right;
+}*/
+
+/* -------------------------------------------------------------------------- */
+
+.wallet_button {
+	font-family: inherit;
+	font-size: 1em;
+	background-color: royalblue;
+	color: white;
+	border-radius: 1.5em;
+	padding: 0 2em 0 2em;
+	height: 3em;
+	margin: 1em 0 1em 0;
+	border: none;
+	cursor: pointer;
+	transition: filter 200ms;
+}
+.wallet_button:hover {
+	transition: filter 200ms;
+	background-color: royalblue;
+	filter: hue-rotate(-4deg) saturate(0.8) brightness(1.5);
+}
+
+.wallet_button[disabled] {
+	cursor: default;
+	background-color: gray;
+}
+
+.wallet_button[disabled]:hover {
+	background-color: gray;
+	filter: none;
+}
+
+.wallet_address {
+	display: block;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+.claim_button {
+	font-family: inherit;
+	font-size: 0.7em;
+	background-color: royalblue;
+	color: #000000;
+	border-radius: 1.5em;
+	padding: 0 1em 0 1em;
+	height: 2em;
+	margin: 2px 0 0 0;
+	border: none;
+	cursor: pointer;
+	transition: filter 200ms;
+}
+.claim_button:hover {
+	transition: filter 200ms;
+	background-color: royalblue;
+	filter: hue-rotate(-4deg) saturate(0.8) brightness(1.5);
+}
+
+.claim_address {
+	display: block;
+}
+
+.claim_button[disabled] {
+	cursor: default;
+	background-color: gray;
+}
+
+.claim_button[disabled]:hover {
+	background-color: gray;
+	filter: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.submit_claim_button,
+.cancel_claim_button,
+input[type=submit],
+input[type=button] {
+	font-family: inherit;
+	font-size: 1em;
+	background-color: royalblue;
+	color: #000000;
+	border-radius: 1.5em;
+	padding: 0;
+	height: 2em;
+	margin: 0.5em 1em 0.5em 0;
+	border: none;
+	cursor: pointer;
+	transition: filter 200ms;
+	width: 16ch;
+}
+
+.submit_claim_button:hover,
+.cancel_claim_button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+	transition: filter 200ms;
+	background-color: royalblue;
+	filter: hue-rotate(-4deg) saturate(0.8) brightness(1.5);
+}
+
+input[type=submit][disabled],
+input[type=button][disabled] {
+	cursor: default;
+	background-color: gray;
+}
+
+input[type=submit][disabled]:hover,
+input[type=button][disabled]:hover {
+	background-color: gray;
+	filter: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+section.wallet_section {
+	padding-bottom: 0;
+}
+section.auction_section {
+	padding-bottom: calc(1 * var(--line-height));
+	padding-top: 0;
+}
+
+section.auction_section,
+section.wallet_section {
+	background: linear-gradient(90deg, rgba(255,255,255,0.15) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* -- tiny screens ---------------------------------------------------------- */
+
+@media only screen and (max-width: 700px){
+	* {
+		/* --font-size: 0.8em; */
+	}
+	#header {
+		/* position: relative; */
+	}
+	section,
+	section.col_1,
+	section.col_2 {
+		grid-template-columns: 100%;
+		grid-row-gap: var(--line-height);
+	}
+}
+/* -- large screens --------------------------------------------------------- */
+
+@media only screen and (min-width: 1300px){
+	* {
+		--font-size: 1.4em;
+	}
+}

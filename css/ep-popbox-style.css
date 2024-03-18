@@ -1,0 +1,159 @@
+body.ep-not-scroll {
+  overflow: hidden;
+}
+
+.ep-popupbox-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20000;
+}
+.ep-popupbox-container .ep-popupbox-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: calc(66.6667% - 3px);
+  height: 100%;
+}
+@media screen and (max-width: 980px) {
+  .ep-popupbox-container .ep-popupbox-wrapper {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.ep-popupbox-container .ep-popupbox-wrapper {
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transition: 0.2s transform ease-in-out;
+  -webkit-transition: 0.2s transform ease-in-out;
+  -moz-transition: 0.2s transform ease-in-out;
+  -ms-transition: 0.2s transform ease-in-out;
+  -o-transition: 0.2s transform ease-in-out;
+}
+.ep-popupbox-container.active .ep-popupbox-wrapper {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+.ep-popupbox-container .ep-popupbox-close {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: -10px;
+  transform: translateX(-100%);
+  cursor: pointer;
+}
+.ep-popupbox-container .ep-popupbox-close span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transform-origin: bottom left;
+}
+.ep-popupbox-container .ep-popupbox-close span:nth-child(1) {
+  top: 4px;
+  left: 5px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.ep-popupbox-container .ep-popupbox-close span:nth-child(2) {
+  top: 3px;
+  right: 6px;
+  margin-right: calc(-1 * 36px);
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+}
+.ep-popupbox-container .ep-popupbox-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s opacity ease-in-out;
+  -webkit-transition: 0.2s opacity ease-in-out;
+  -moz-transition: 0.2s opacity ease-in-out;
+  -ms-transition: 0.2s opacity ease-in-out;
+  -o-transition: 0.2s opacity ease-in-out;
+}
+.ep-popupbox-container .ep-popupbox-loading {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  max-width: 100px;
+  min-width: 36px;
+}
+.ep-popupbox-container .ep-popupbox-loading svg {
+  width: 100%;
+  height: 100%;
+}
+.ep-popupbox-container.active .ep-popupbox-overlay {
+  opacity: 1;
+}
+.ep-popupbox-container.loading .ep-popupbox-loading {
+  opacity: 1;
+}
+.ep-popupbox-container .ep-popupbox-wrapper {
+  background-color: #ffffff;
+  color: #000;
+  max-width: 2000px;
+}
+.ep-popupbox-container .ep-popupbox-wrapper .content-scroller {
+  position: relative;
+  height: 100%;
+  overflow: hidden scroll;
+  padding: 10px 0;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.ep-popupbox-container .ep-popupbox-wrapper .content-scroller::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+.ep-popupbox-container .ep-popupbox-wrapper #main-content {
+  padding-top: 0;
+}
+.ep-popupbox-container .ep-popupbox-wrapper .more-grad {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 5%;
+  min-height: 20px;
+  max-height: 36px;
+  background: linear-gradient(0deg, rgb(255, 255, 255), rgba(255, 255, 255, 0.5) 70%, transparent 100%);
+}

@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'iroje_gothic';
+    src: url('font-light.woff2') format('woff2'),
+        url('font-light.woff') format('woff');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'iroje_gothic';
+    src: url('font-bold.woff2') format('woff2'),
+        url('font-bold.woff') format('woff');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''), url('gothic-a1-500.woff') format('woff'),
+        url('gothic-a1-500.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''), url('gothic-a1-700.woff') format('woff'),
+        url('gothic-a1-700.woff2') format('woff2');
+}
